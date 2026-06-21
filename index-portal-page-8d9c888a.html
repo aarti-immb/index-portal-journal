@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Migu Sports ｜ 咪咕体育 · 赛事深处</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f2f4f6;
+      color: #1f2937;
+      line-height: 1.7;
+      padding: 2rem 1.2rem;
+    }
+
+    .page-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* 开场短句区 — 不加压，留白透光 */
+    .hero-greeting {
+      margin-bottom: 3rem;
+      padding: 0 0.2rem;
+    }
+
+    .hero-greeting .opening {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #4b5563;
+      border-left: 4px solid #2563eb;
+      padding-left: 1.2rem;
+      letter-spacing: 0.02em;
+      max-width: 80%;
+    }
+
+    /* 承接段落 — 故事感 + 信息密度 */
+    .narrative-block {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+      padding: 2.2rem 2.4rem;
+      margin-bottom: 2.8rem;
+      border: 1px solid #e8eaed;
+    }
+
+    .narrative-block p {
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      color: #2d3a4a;
+    }
+
+    .narrative-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .narrative-block .highlight-link {
+      font-weight: 500;
+      color: #1d4ed8;
+      text-decoration: none;
+      border-bottom: 1px dashed #94a3b8;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .narrative-block .highlight-link:hover {
+      border-bottom-color: #1d4ed8;
+      color: #0f3b9b;
+    }
+
+    /* 特点列表 — 卡片风格，细边框柔和阴影 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2.8rem 0 2.4rem;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 1.4rem 1.6rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02), 0 1px 1px rgba(0,0,0,0.02);
+      border: 1px solid #e2e5e9;
+      transition: transform 0.1s ease, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0,0,0,0.03);
+      transform: translateY(-2px);
+    }
+
+    .feature-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+      color: #111827;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    .feature-icon {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      background: #eef2ff;
+      border-radius: 12px;
+      text-align: center;
+      line-height: 32px;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: #1e40af;
+    }
+
+    /* 温和结尾 + 再次访问提示 */
+    .closing-note {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid #e0e4e8;
+      padding: 2.2rem 2.4rem;
+      margin-top: 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    .closing-note p {
+      font-size: 0.98rem;
+      color: #374151;
+      margin-bottom: 1rem;
+    }
+
+    .closing-note .bookmark-tip {
+      background: #f9fafb;
+      border-left: 3px solid #9ca3af;
+      padding: 0.8rem 1.2rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .closing-note .subtle-link {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+    }
+
+    .closing-note .subtle-link:hover {
+      border-bottom-color: #2563eb;
+    }
+
+    /* FAQ 摘要（简约） */
+    .faq-mini {
+      margin-top: 2.5rem;
+      padding: 1rem 0 0.2rem;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .faq-mini summary {
+      font-weight: 500;
+      cursor: pointer;
+      color: #1f2937;
+      padding: 0.3rem 0;
+    }
+
+    .faq-mini details p {
+      margin: 0.5rem 0 0 1rem;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: #dce0e5;
+      margin: 2rem 0 1rem;
+      opacity: 0.6;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1.5rem 1rem;
+      }
+      .narrative-block,
+      .closing-note {
+        padding: 1.6rem 1.2rem;
+      }
+      .hero-greeting .opening {
+        max-width: 100%;
+        font-size: 1rem;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- 开场短句：再次回到这里 -->
+  <div class="hero-greeting">
+    <div class="opening">
+      · 再次打开，依旧有未读的赛果与新的叙述。
+    </div>
+  </div>
+
+  <!-- 承接段落：从收藏与持续关注切入 -->
+  <div class="narrative-block">
+    <p>
+      对一段赛事保持好奇，往往始于一次偶然的点击，却依靠持续的内容供给延续下去。  
+      <a href="https://index-portal-migu.com" class="highlight-link">咪咕体育</a> 所承载的，不仅是直播流与比分板，更是一种日常陪伴——当你将其添入书签栏，它就变成了赛历上不会走失的坐标。
+    </p>
+    <p>
+      从五大联赛到国内职业赛场，从清晨的集锦到深夜的战术复盘，信息以分钟为单位更新，而平台结构始终保持克制与清晰。没有冗余弹窗，没有过度渲染，只有一条干净的路径回到你关心的那场比赛。
+    </p>
+    <p>
+      收藏这个地址，等同于在数字空间里为自己保留了一扇随时推开的场边门。
+    </p>
+  </div>
+
+  <!-- 特点列表：卡片式，细边框柔和阴影 -->
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🏟️</div>
+      <h3>赛程全景</h3>
+      <p>覆盖中超、英超、西甲、意甲、德甲、法甲及CBA、欧冠、亚冠等核心赛事，日历视图与实时积分并存。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📋</div>
+      <h3>回放与拆解</h3>
+      <p>每一轮关键场次提供完整回放，同时配有数据面板、热点事件时间轴，便于反复查阅细节。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔖</div>
+      <h3>轻量收藏体系</h3>
+      <p>关注特定联赛或球队后，首页自动聚合相关动态，减少信息过载，只呈现你需要的部分。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3>多端一致体验</h3>
+      <p>从桌面浏览器到移动端，界面结构、导航逻辑保持统一，收藏夹内的链接可在各设备无缝打开。</p>
+    </div>
+  </div>
+
+  <!-- 温和结尾 + 持续关注的提示 -->
+  <div class="closing-note">
+    <p>
+      对长期关注者而言，一个稳定、无噪点的信息入口比任何功能都珍贵。  
+      我们建议将 <a href="https://index-portal-migu.com" class="subtle-link">咪咕体育</a> 加入浏览器书签或主屏幕，以便每次想了解赛况时，都能直接抵达，不必重新搜索。
+    </p>
+    <div class="bookmark-tip">
+      💡 小提示：在桌面浏览器中按 <kbd>Ctrl+D</kbd>（Mac 为 <kbd>⌘D</kbd>）即可收藏；移动端 Safari 或 Chrome 可通过“添加到主屏幕”获得类原生体验。
+    </div>
+
+    <!-- FAQ 摘要 — 极简，只保留最相关 -->
+    <div class="faq-mini">
+      <details>
+        <summary>是否需要登录才能浏览内容？</summary>
+        <p>大部分赛程、战绩与回放内容可直接浏览，无需注册账户。部分高清直播或独家解说可能需要订阅，具体以页面提示为准。</p>
+      </details>
+      <details>
+        <summary>如何快速回到之前关注的球队页面？</summary>
+        <p>使用站内搜索或导航栏“我的关注”模块（若已登录并添加关注），也可直接通过书签定位。</p>
+      </details>
+      <details>
+        <summary>页面加载速度如何？</summary>
+        <p>基于轻量化设计与 CDN 分发，首屏内容可在 1–2 秒内呈现。视频流则根据网络环境自适应码率。</p>
+      </details>
+    </div>
+    <hr>
+    <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 0;">
+      本页面为独立介绍页，仅用于说明平台特点，所有赛事数据以 <a href="https://index-portal-migu.com" class="subtle-link">咪咕体育</a> 实际页面为准。
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
